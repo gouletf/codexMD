@@ -1,6 +1,6 @@
 const path = require("path");
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
     mode: "development",
@@ -11,9 +11,24 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.(js)$/, use: "babel-loader" },
-            { test: /\.(css)$/, use: ["style-loader", "css-loader"] },
+            {
+                test: /\.(js)$/,
+                enforce: "pre",
+                use: ["source-map-loader"],
+            },
+            {
+                test: /\.(css)$/,
+                exclude: /node_modules/,
+                use: ["style-loader", "css-loader"],
+            },
+            { test: /\.(js)$/, exclude: /node_modules/, use: "babel-loader" },
         ],
     },
-    plugins: [new HtmlWebpackPlugin({ template: "public/index.html" })],
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, "public", "index.html"),
+            favicon: path.resolve(__dirname, "public", "favicon-16x16.png"),
+        }),
+        new Dotenv(),
+    ],
 };
