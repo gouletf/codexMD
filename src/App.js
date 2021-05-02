@@ -44,7 +44,7 @@ export default function App() {
     return (
         <Container fixed>
             <TodoCardDialog
-                isDialogOpen={!!currentTodo || isNewTodo}
+                isDialogOpen={!!currentTodo}
                 currentTodo={currentTodo}
                 handleCloseDialog={handleCloseDialog}
             />
