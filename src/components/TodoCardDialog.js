@@ -15,7 +15,7 @@ export default function TodoCardDialog(props) {
     return (
         <Dialog
             open={isDialogOpen}
-            onClose={handleCloseDialog}
+            onClose={() => handleCloseDialog()}
             aria-labelledby="form-dialog-title"
         >
             <DialogTitle id="form-dialog-title">Edit Todo</DialogTitle>
@@ -35,7 +35,7 @@ export default function TodoCardDialog(props) {
                 </div>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleCloseDialog} color="primary">
+                <Button onClick={() => handleCloseDialog()} color="primary">
                     Cancel
                 </Button>
                 <Button
