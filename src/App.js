@@ -61,7 +61,7 @@ export default function App() {
                     );
                 })}
             </div>
-            <Box paddingTop="3rem">
+            <Box paddingTop="3rem" paddingBottom="1rem" textAlign="center">
                 <Button variant="outlined" onClick={() => setCurrentTodo({})}>
                     New TODO
                 </Button>

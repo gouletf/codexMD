@@ -5,17 +5,13 @@ const Dotenv = require("dotenv-webpack");
 module.exports = {
     mode: "development",
     entry: "./src/index.js",
+    devtool: "eval-source-map",
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "index.bundle.js",
     },
     module: {
         rules: [
-            {
-                test: /\.(js)$/,
-                enforce: "pre",
-                use: ["source-map-loader"],
-            },
             {
                 test: /\.(css)$/,
                 exclude: /node_modules/,

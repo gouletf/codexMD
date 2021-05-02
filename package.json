@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "dev": "webpack serve --mode development"
+        "dev": "webpack serve --mode development",
+        "deploy": "webpack && firebase deploy"
     },
     "repository": "git@github.com:bobbyconnolly/firebase-todo.git",
     "author": "Bobby Connolly <bobbyconnolly@gmail.com>",
@@ -22,7 +23,6 @@
         "css-loader": "^5.2.4",
         "dotenv-webpack": "^7.0.2",
         "html-webpack-plugin": "^5.3.1",
-        "source-map-loader": "^2.0.1",
         "style-loader": "^2.0.0",
         "webpack": "^5.36.2",
         "webpack-cli": "^4.6.0",
