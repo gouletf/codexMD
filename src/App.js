@@ -1,35 +1,37 @@
 import React, { useEffect, useState, useReducer, useContext } from "react";
 import ScanDocument from "./components/ScanDocument";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 //import 'react-toastify/dist/ReactToastify.css';
-import "!style-loader!css-loader!react-toastify/dist/ReactToastify.css"
-import * as Rx from 'rxjs';  
-import { map } from 'rxjs/operators';     
+import "!style-loader!css-loader!react-toastify/dist/ReactToastify.css";
+import * as Rx from "rxjs";
+import { map } from "rxjs/operators";
 
 import firebase from "firebase/app";
 import { db } from "./firebase";
 
 import LoadingSpinner from "./components/LoadingSpinner.js";
+import { Context } from "./Context-Provider";
 
 export default function App() {
+    const { state } = useContext(Context);
 
-    useEffect(() => {
-        //firebase.functions().useEmulator("localhost", 5001);
-        //firebase.functions().httpsCallable("helloWorld")().then(console.log).catch(console.log)
-        // const unsub = db.collection("todos").onSnapshot((snap) => {
-        //     setTodos(
-        //         snap.docs.map((doc) => {
-        //             return { id: doc.id, ...doc.data() };
-        //         })
-        //     );
-        // });
+    // useEffect(() => {
+    //     //firebase.functions().useEmulator("localhost", 5001);
+    //     //firebase.functions().httpsCallable("helloWorld")().then(console.log).catch(console.log)
+    //     // const unsub = db.collection("todos").onSnapshot((snap) => {
+    //     //     setTodos(
+    //     //         snap.docs.map((doc) => {
+    //     //             return { id: doc.id, ...doc.data() };
+    //     //         })
+    //     //     );
+    //     // });
 
-        return () => unsub();
-    }, []);
+    //     return () => unsub();
+    // }, []);
 
     return (
         <div className="flex">
-            <LoadingSpinner />
+            {state.buttonDisabled && <LoadingSpinner />}
             <ScanDocument />
         </div>
     );
