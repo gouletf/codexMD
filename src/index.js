@@ -1,15 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import App from "./App";
 import "./styles.css";
+import ErrorBoundary from "./ErrorBoundary";
 
 import {} from "./firebase";
+import { ContextProvider } from "./Context-Provider";
 
 ReactDOM.render(
-    <>
-        <CssBaseline />
-        <App></App>
-    </>,
+        <ErrorBoundary>
+            <ContextProvider>
+                <App />
+            </ContextProvider>
+        </ErrorBoundary>,
     document.getElementById("root")
 );
